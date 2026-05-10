@@ -7,11 +7,11 @@ local UIManager = require("ui/uimanager")
 local WidgetContainer = require("ui/widget/container/widgetcontainer")
 local lfs = require("libs/libkoreader-lfs")
 
-local TimeSyncFork = WidgetContainer:extend{
-    name = "timesync-fork",
+local TimeSyncPlus = WidgetContainer:extend{
+    name = "timesyncplus",
 }
 
-local SETTINGS_FILE = DataStorage:getSettingsDir() .. "/timesync_fork.lua"
+local SETTINGS_FILE = DataStorage:getSettingsDir() .. "/timesyncplus.lua"
 local DEFAULT_TIMEZONE = "Atlantic/Canary"
 local STARTUP_DELAY_SECONDS = 6
 local RESUME_DELAY_SECONDS = 12
@@ -73,7 +73,8 @@ local function isValidTimezone(timezone)
 end
 
 local function getTimezone()
-    local timezone = getSettings():readSetting("timezone") or DEFAULT_TIMEZONE
+    local timezone = getSettings():readSetting("timezone")
+        or DEFAULT_TIMEZONE
     if isValidTimezone(timezone) then
         return timezone
     end
@@ -197,7 +198,7 @@ local function applyDisplayedTime(date)
     return false
 end
 
-function TimeSyncFork:syncNow(is_auto)
+function TimeSyncPlus:syncNow(is_auto)
     if self.sync_running then
         return false
     end
@@ -237,7 +238,7 @@ function TimeSyncFork:syncNow(is_auto)
     return true
 end
 
-function TimeSyncFork:scheduleAutoSync(delay_seconds)
+function TimeSyncPlus:scheduleAutoSync(delay_seconds)
     if self.auto_sync_scheduled then
         return
     end
@@ -251,16 +252,16 @@ function TimeSyncFork:scheduleAutoSync(delay_seconds)
     end)
 end
 
-function TimeSyncFork:onResume()
+function TimeSyncPlus:onResume()
     self:scheduleAutoSync(RESUME_DELAY_SECONDS)
 end
 
-function TimeSyncFork:init()
+function TimeSyncPlus:init()
     self.ui.menu:registerToMainMenu(self)
     self:scheduleAutoSync(STARTUP_DELAY_SECONDS)
 end
 
-function TimeSyncFork:addToMainMenu(menu_items)
+function TimeSyncPlus:addToMainMenu(menu_items)
     local timezone_items = {}
     for _, timezone in ipairs(TIMEZONES) do
         table.insert(timezone_items, {
@@ -279,7 +280,7 @@ function TimeSyncFork:addToMainMenu(menu_items)
         })
     end
 
-    menu_items.timesync_fork = {
+    menu_items.timesyncplus = {
         text = "Time Sync Plus",
         sorting_hint = "tools",
         sub_item_table = {
@@ -300,4 +301,4 @@ function TimeSyncFork:addToMainMenu(menu_items)
     }
 end
 
-return TimeSyncFork
+return TimeSyncPlus

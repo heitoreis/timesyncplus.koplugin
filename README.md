@@ -1,4 +1,4 @@
-# timesync-fork.koplugin
+# Time Sync Plus
 
 A KOReader plugin that keeps the Kindle clock aligned to a selected timezone.
 
@@ -42,7 +42,7 @@ There is no hardcoded one-hour correction. DST is handled by the remote timezone
 
 ## Installation
 
-1. Copy this folder to KOReader's plugins directory as `timesync-fork.koplugin`.
+1. Copy this folder to KOReader's plugins directory as `timesyncplus.koplugin`.
 2. Restart KOReader.
 3. Choose your timezone once from **Tools** -> **Time Sync Plus** -> **Timezone**.
 4. After that, sync is automatic.
