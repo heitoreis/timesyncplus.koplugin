@@ -18,7 +18,7 @@ The plugin does not trust the Kindle's existing system time. It fetches the curr
 
 Open:
 
-`Tools` -> `Time Sync` -> `Timezone`
+`Tools` -> `Time Sync Plus` -> `Timezone`
 
 The default timezone is `Atlantic/Canary`. Major timezone options are included, such as:
 
@@ -44,7 +44,7 @@ There is no hardcoded one-hour correction. DST is handled by the remote timezone
 
 1. Copy this folder to KOReader's plugins directory as `timesync-fork.koplugin`.
 2. Restart KOReader.
-3. Choose your timezone once from **Tools** -> **Time Sync** -> **Timezone**.
+3. Choose your timezone once from **Tools** -> **Time Sync Plus** -> **Timezone**.
 4. After that, sync is automatic.
 
 ## Files

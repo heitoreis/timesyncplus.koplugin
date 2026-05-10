@@ -280,7 +280,7 @@ function TimeSyncFork:addToMainMenu(menu_items)
     end
 
     menu_items.timesync_fork = {
-        text = "Time Sync",
+        text = "Time Sync Plus",
         sorting_hint = "tools",
         sub_item_table = {
             {
