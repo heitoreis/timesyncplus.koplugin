@@ -246,9 +246,9 @@ function TimeSyncPlus:scheduleAutoSync(delay_seconds)
 
     UIManager:scheduleIn(delay_seconds, function()
         self.auto_sync_scheduled = false
-        NetworkMgr:runWhenOnline(function()
+        if NetworkMgr:isConnected() then
             self:syncNow(true)
-        end)
+        end
     end)
 end
 
